@@ -1,0 +1,4 @@
+var config = {
+    "openweathermap_api": "",
+    "calendar_iframe": ''
+}
