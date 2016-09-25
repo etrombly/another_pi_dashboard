@@ -25,7 +25,7 @@ function init() {
 }
 
 function checkWeather() {
-    $.ajax({url: "http://api.openweathermap.org/data/2.5/weather?q=wiesbaden&APPID=" + config.openweathermap_api + "&units=imperial",
+    $.ajax({url: "http://api.openweathermap.org/data/2.5/weather?q=" + config.openweathermap.location + "&APPID=" + config.openweathermap.api + "&units=imperial",
            type: "GET",
            dataType: "json"})
     .done(function(json) {
@@ -39,7 +39,7 @@ function checkWeather() {
         $('#weather').html("Couldn't retrieve weather data");
     });
 
-    $.ajax({url: "http://api.openweathermap.org/data/2.5/forecast?q=wiesbaden&APPID=" + config.openweathermap_api + "&units=imperial",
+    $.ajax({url: "http://api.openweathermap.org/data/2.5/forecast?q=" + config.openweathermap.location + "&APPID=" + config.openweathermap.api + "&units=imperial",
             type: "GET",
             dataType: "jsonp"})
     .done(function(json) {
