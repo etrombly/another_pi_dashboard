@@ -44,6 +44,7 @@ function checkWeather() {
             dataType: "jsonp"})
     .done(function(json) {
         var sorted = {};
+        var ctx = $("#tempChart");
         for (var i = 0; i < json.list.length; i++){
             var d = new Date(json.list[i].dt * 1000);
             if (typeof sorted[d.getDayOfWeek()] == "undefined") {
@@ -59,6 +60,8 @@ function checkWeather() {
         }
         rows[0].insertCell(0);
         var index = 1;
+        var temps = [];
+        var labels = [];
         for (var i = 1; i < 9; i++){
             var d = new Date(sorted[Object.keys(sorted)[Object.keys(sorted).length - 2]][i-1].dt * 1000);
             var cell = rows[i].insertCell(0);
@@ -67,6 +70,7 @@ function checkWeather() {
         for (key in sorted){
             var cell = rows[0].insertCell(index);
             cell.innerHTML = key;
+            labels.push(key);
             var cells = [];
             for (var i = 1; i < 9; i++){
                 cells.push(rows[i].insertCell(index));
@@ -77,12 +81,39 @@ function checkWeather() {
                         var d = new Date(sorted[key][i].dt * 1000);
                         if (rows[ii].cells[0].innerHTML == getTime(d)){
                             rows[ii].cells[index].innerHTML = '<i class="owf owf-{0}"></i> {1}F'.format(sorted[key][i].weather[0].id, Math.round(sorted[key][i].main.temp));
+                            temps.push(Math.round(sorted[key][i].main.temp));
+                            if(i != 0) {
+                                labels.push(getTime(d));
+                            }
                         }
                     }
                 }
             }
             index++;
         }
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Temperature',
+                    fill: false,
+                    data: temps,
+                    borderColor: 'rgba(100,100,100,1)',
+                    pointRadius: 1,
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:false
+                        }
+                    }]
+                }
+            }
+        });
     });
     var weatherTimer = setTimeout(checkWeather, 600000);
 }
