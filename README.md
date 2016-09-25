@@ -4,3 +4,5 @@ A weather and calendar dashboard loosely based on http://www.instructables.com/i
 
 self contained, no need for a web server. Update config.json with your openweathermap api key, and iframe from google calendar. 
 Point web browser to dashboard.html.
+
+![Screenshot](/screenshot.png?raw=true "Screenshot")
