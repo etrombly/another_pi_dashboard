@@ -11,7 +11,7 @@ function reflow(){
         $('#calendar').css('position', 'relative');
         $('#calendar').css('top', 0);
         $('#container').css('width', '99%');
-        $('#calendar').css('height', '60%');
+        $('#calendar').css('height', '50%');
         $('#calendar').css('left', 0);
     }
 }
