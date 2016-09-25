@@ -1,20 +1,28 @@
-body            {background-image: url('../background.jpg');
+html            {height: 100%;}
+
+body            {background-image: url('../sunny.jpg');
                 background-repeat: no-repeat;
                 background-attachment: fixed;
-                font: 40px Monospace bold;
+                background-size: cover;
+                font: 3vw Monospace bold;
                 text-align: center;
                 margin: 0;
-                overflow: hidden;}
+                overflow: hidden;
+                height: 100%;}
         
-.widget         {background: rgba(250, 250, 250, .4);
-                margin: 1%;
-                width: 99%;}
+.widget         {background: rgba(250, 250, 250, .7);
+                margin: .5%;
+                width: 100%;}
         
-#quote          {font: 28px Monospace bold;}
+#container      {position: absolute;
+                 width: 99%;
+                 height: 99%;}
+
+#quote          {font: 1.5vw Monospace bold;}
 
 #forecast_table {margin-left: auto;
                 margin-right: auto;
                 width: 90%;
-                font: 28px Monospace bold;}
+                font: 2vw Monospace bold;}
         
-#calendar       {height: 600px;}
+#calendar       {height: 60%;}
